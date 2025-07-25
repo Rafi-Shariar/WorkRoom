@@ -12,7 +12,7 @@ const Navbar = () => {
 
                 <section>
                     <button className='btn mr-3 rounded-full btn-info px-6'>Login</button>
-                    <button className='btn btn-soft btn-info rounded-full'>Register</button>
+                    <button className='btn btn-soft btn-info rounded-full hidden md:in'>Register</button>
                 </section>
             </nav>
     

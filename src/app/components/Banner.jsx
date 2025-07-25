@@ -14,15 +14,14 @@ const defaultOptions = {
 const Banner = () => {
     return (
         <div>
-            <section className='flex items-center'>
+            <section className='flex items-center flex-col md:flex-row mt-6'>
 
-                <div className='space-y-3 w-1/2'>
+                <div className='space-y-3 md:w-1/2'>
 
-                    <h1 className='text-5xl font-semibold'>Organize Work. Empower Teams. Deliver Results.</h1>
-                    <h3 className=''>Welcome to WorKRoom — your all-in-one platform to manage workplaces, assign tasks, track progress, and collaborate efficiently. Whether you're leading a team or part of one, WorKRoom keeps everyone aligned and productive.</h3>
+                    <h1 className='text-4xl md:text-5xl font-semibold'>Organize Work. Empower Teams. Deliver Results.</h1>
+                    <h3 className='text-base md:text-lg'>Welcome to WorKRoom — your all-in-one platform to manage workplaces, assign tasks, track progress, and collaborate efficiently. Whether you're leading a team or part of one, WorKRoom keeps everyone aligned and productive.</h3>
     
 
-                    {/* <h1 className='text-2xl'>Create Workspaces ·  Manage Teams ·  Assign Tasks ·  Share Updates</h1> */}
                     <Link href={'as'}>
                       <button className='btn btn-soft btn-info rounded-full px-12 hover:text-white mt-6'>Get Started <MoveRight /></button>
                        
@@ -30,8 +29,12 @@ const Banner = () => {
 
                 </div>
 
-                <div className='w-1/2'>
-                    <Lottie options={defaultOptions} height={500} width={500}></Lottie>
+                <div className=' md:w-1/2'>
+                    <Lottie options={defaultOptions} height={300} width={300} style={{
+                        maxWidth: '100%',
+                        height: 'auto',
+                        width: '100%'
+                    }}></Lottie>
 
                 </div>
             </section>
