@@ -12,9 +12,9 @@ const Navbar = () => {
   return (
     <nav className="flex justify-between items-center mt-6">
       <section className="flex items-center gap-3">
-        <Image src={logo} alt="logo" width={52} height={52}></Image>
+        <Image src={logo} alt="logo"  className="w-8 h-8 md:w-12 md:h-12"></Image>
         <Link href={"/"}>
-          <h1 className="text-3xl font-semibold">
+          <h1 className="text-xl md:text-3xl font-semibold">
             WorK <span className="font-light -ml-1">Room</span>
           </h1>
         </Link>
@@ -26,10 +26,15 @@ const Navbar = () => {
           
           <div className="flex items-center gap-3">
 
-            <h1 className="text-xl font-semibold text-blue-700 border-b border-r p-2 border-slate-300 rounded-lg">Hi, {session.user?.name}</h1>
+            <h1 className="text-xl hidden md:inline font-semibold text-blue-700 px-2 ">Hi, {session.user?.name}</h1>
+            <Link href={"/dashboard"}>
+                <button className="btn btn-warning rounded-full ">
+                  Dashboard
+                </button>
+              </Link>
             <button onClick={()=> signOut()} className="btn mr-3 rounded-full btn-outline btn-error px-6">
                   Logout
-                </button>
+              </button>
           </div>
           
           </>

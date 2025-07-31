@@ -11,9 +11,14 @@ const RegisterForm = () => {
     const email = e.target.email.value;
     const password = e.target.password.value;
     const name = e.target.name.value;
+    const photo = e.target.photo.value;
+    const companyName = e.target.companyName.value;
+    const designation = e.target.designation.value;
+
+    const payload = {email,password,name,photo,companyName,designation};
 
     try{
-       const res = await registerUser({email,password,name});
+       const res = await registerUser(payload);
 
     if(res.success){
       toast.success('Successfully Registered!')
@@ -35,12 +40,23 @@ const RegisterForm = () => {
       <h1 className="text-2xl font-semibold">Register Now !</h1>
 
       <form onSubmit={handleLogin} className="fieldset p-6">
+        <label className="label text-lg">Photo URL</label>
+        <input
+          type="url"
+          className="input w-[90%]"
+          placeholder="provide your photo url"
+          name="photo"
+          required
+        />
+
         <label className="label text-lg">Name</label>
         <input
           type="text"
           className="input w-[90%]"
           placeholder="Name"
           name="name"
+          required
+          
         />
 
         <label className="label text-lg">Email</label>
@@ -49,6 +65,25 @@ const RegisterForm = () => {
           className="input w-[90%]"
           placeholder="Email"
           name="email"
+          required
+        />
+
+         <label className="label text-lg">Company Name</label>
+        <input
+          type="text"
+          className="input w-[90%]"
+          placeholder="Company name..."
+          name="companyName"
+          required
+        />
+
+          <label className="label text-lg">Designation</label>
+        <input
+          type="text"
+          className="input w-[90%]"
+          placeholder="Your designation"
+          name="designation"
+          required
         />
 
         <label className="label text-lg">Password</label>
@@ -57,6 +92,7 @@ const RegisterForm = () => {
           className="input w-[90%]"
           placeholder="Password"
           name="password"
+          required
         />
 
         <button

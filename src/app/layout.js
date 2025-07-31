@@ -26,9 +26,8 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <section className="max-w-7xl mx-auto">
+        <section className="">
           <NextAuthProvider>
-            <Navbar />
             {children}
           </NextAuthProvider>
         </section>
