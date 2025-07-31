@@ -1,40 +1,48 @@
-'use client';
+"use client";
+import { registerUser } from "@/app/actions/auth/registerUser";
 import Link from "next/link";
 import React from "react";
-import { signIn} from "next-auth/react"
-import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
-const LoginForm = () => {
-  const router = useRouter();
-
+const RegisterForm = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
 
     const email = e.target.email.value;
     const password = e.target.password.value;
-    const res = await signIn("credentials", {email,password, callbackUrl:'/', redirect:false})
+    const name = e.target.name.value;
 
-    console.log(res);
-    
+    try{
+       const res = await registerUser({email,password,name});
 
-    if(res?.ok){
-      toast.success('logged In');
-      router.push('/');
-
+    if(res.success){
+      toast.success('Successfully Registered!')
     }
     else{
-      toast.error('Login failed');
+      toast.error(`${res.message}`)
     }
 
-  
+    }
+    catch(err){
+      toast.error('Something went wrong!');
+      console.log(err);
+      
+    }
 
   };
   return (
     <div className="border border-sky-200 rounded-2xl p-16 shadow-xl">
-      <h1 className="text-2xl font-semibold">Login</h1>
+      <h1 className="text-2xl font-semibold">Register Now !</h1>
 
       <form onSubmit={handleLogin} className="fieldset p-6">
+        <label className="label text-lg">Name</label>
+        <input
+          type="text"
+          className="input w-[90%]"
+          placeholder="Name"
+          name="name"
+        />
+
         <label className="label text-lg">Email</label>
         <input
           type="email"
@@ -55,17 +63,20 @@ const LoginForm = () => {
           type="submit"
           className="btn btn-info btn-outline mt-4 rounded-full w-[90%]"
         >
-          Login Now
+          Register Now
         </button>
 
-        <div className="divider">
+        <div className="divider"></div>
 
-        </div>
-
-        <p className="text-base">Don't have an account? <Link href={'/register'} className="text-sky-600 font-semibold">Register Now</Link></p>
+        <p className="text-base">
+          Already have an account?{" "}
+          <Link href={"/login"} className="text-sky-600 font-semibold">
+            Login Now
+          </Link>
+        </p>
       </form>
     </div>
   );
 };
 
-export default LoginForm;
+export default RegisterForm;
