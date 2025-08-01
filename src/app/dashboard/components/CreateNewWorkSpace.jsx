@@ -36,40 +36,28 @@ const CreateNewWorkSpace = () => {
 
       const postedRes = await res.json();
 
-      if(postedRes.acknowledged){
-        toast.success('New Work Place Added');
+      if (postedRes.acknowledged) {
+        toast.success("New Work Place Added");
         e.target.reset();
+      } else {
+        toast.error("Something went wrong!");
       }
-      else{
-        toast.error('Something went wrong!')
-      }
-    } catch (err) { toast.error('Something went wrong!')}
+    } catch (err) {
+      toast.error("Something went wrong!");
+    }
 
-    document.getElementById("my_modal_1").close()
+    document.getElementById("my_modal_1").close();
   };
 
   return (
-    <div className="border p-6 w-84 flex flex-col items-center rounded-lg bg-blue-50 border-blue-500">
-      <h1 className="text-xl font-semibold text-blue-800">
-        {" "}
-        Create New Work Space
-      </h1>
-      <p className="text-xs mt-2 text-slate-400">
-        manage teams, collaborate tasks
-      </p>
-      <Image
-        src={createImg}
-        width={50}
-        height={50}
-        className="mt-6"
-        alt="createLogo"
-      ></Image>
+    <div className="mt-3 md:mt-0">
+    
 
       <button
-        className="btn"
+        className="btn bg-blue-500 text-white rounded-full"
         onClick={() => document.getElementById("my_modal_1").showModal()}
       >
-        open modal
+        Add Work Space
       </button>
 
       <dialog id="my_modal_1" className="modal">
