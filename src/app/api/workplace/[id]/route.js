@@ -19,3 +19,16 @@ export const GET = async (req, { params }) => {
     return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
   }
 };
+
+
+export const DELETE = async (req, {params}) =>{
+
+  const p = await params;
+  const workSpaceCollection = dbConnect(collectionNames.workSpaceCollection);
+  const query = { _id : new ObjectId(p.id)};
+  const deleteResponse = await workSpaceCollection.deleteOne(query);
+  revalidatePath('/dashboard')
+
+  return NextResponse.json(deleteResponse);
+
+}
