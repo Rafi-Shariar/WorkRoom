@@ -3,6 +3,7 @@ import { MongoClient, ServerApiVersion } from "mongodb";
 
 export const collectionNames = {
     userCollection : 'users',
+    workSpaceCollection: 'workspaces'
 }
 
 export default function dbConnect(collectionName) {
